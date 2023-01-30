@@ -1,3 +1,5 @@
+import albumentations
+import numpy as np
 import win32gui
 
 def get_window_region(window_name="Don't Starve Together", offset=7):
@@ -19,3 +21,31 @@ def get_window_region(window_name="Don't Starve Together", offset=7):
     bottom = window_rectangle[3] - offset
     window_region = (left, top, right, bottom)
     return window_region
+
+# adapted from https://sheldonsebastian94.medium.com/resizing-image-and-bounding-boxes-for-object-detection-7b9d9463125a
+def resize_image(img_arr, bboxes, h, w):
+    """
+    :param img_arr: original image as a numpy array
+    :param bboxes: bboxes as numpy array where each row is 'x_min', 'y_min', 'x_max', 'y_max', "class_id"
+    :param h: resized height dimension of image
+    :param w: resized weight dimension of image
+    :return: dictionary containing {image:transformed, bboxes:['x_min', 'y_min', 'x_max', 'y_max', "class_id"]}
+    """
+    # create resize transform pipeline
+    transform = albumentations.Compose(
+        [albumentations.Resize(height=h, width=w, always_apply=True)],
+        bbox_params=albumentations.BboxParams(format='coco'))
+
+    # pad bboxes with a column of ones (class labels) to visualize selective search results 
+    if (bboxes.shape[1] == 4):
+        padded_bboxes = np.c_[ bboxes, np.ones(bboxes.shape[0]) ]
+        transformed = transform(image=img_arr, bboxes=padded_bboxes)
+    elif (bboxes.shape[1] == 5):
+        transformed = transform(image=img_arr, bboxes=bboxes)
+
+    return transformed
+
+def resize_bboxes(img_arr, bboxes, h, w):
+    resized_bboxes = resize_image(img_arr, bboxes, h, w)['bboxes']
+    return resized_bboxes
+    
