@@ -1,0 +1,1 @@
+labelimg ./data/images ./data/labels/classes.txt
