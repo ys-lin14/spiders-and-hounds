@@ -3,7 +3,7 @@ import numpy as np
 import win32gui
 
 def get_window_region(window_name="Don't Starve Together", offset=7):
-    '''Get the screen coordinates of a window.
+    """Get the screen coordinates of a window.
     
     Args:
         window_name: Name of the window.
@@ -12,7 +12,7 @@ def get_window_region(window_name="Don't Starve Together", offset=7):
     Returns:
         window_region: A tuple (left, top, right, bottom) corresponding 
           to the coordinates of the window. 
-    '''
+    """
     window_handle = win32gui.FindWindow(None, window_name)
     window_rectangle = win32gui.GetWindowRect(window_handle)
     left = window_rectangle[0] + offset      
@@ -25,11 +25,16 @@ def get_window_region(window_name="Don't Starve Together", offset=7):
 # adapted from https://sheldonsebastian94.medium.com/resizing-image-and-bounding-boxes-for-object-detection-7b9d9463125a
 def resize_image(img_arr, bboxes, h, w):
     """
-    :param img_arr: original image as a numpy array
-    :param bboxes: bboxes as numpy array where each row is 'x_min', 'y_min', 'x_max', 'y_max', "class_id"
-    :param h: resized height dimension of image
-    :param w: resized weight dimension of image
-    :return: dictionary containing {image:transformed, bboxes:['x_min', 'y_min', 'x_max', 'y_max', "class_id"]}
+    Args:
+        img_arr: original image as a numpy array
+        bboxes: bboxes as numpy array where each row is 
+          'x_min', 'y_min', 'x_max', 'y_max', 'class_id'
+        h: resized height dimension of image
+        w: resized weight dimension of image
+    
+    Returns: 
+        transformed: dictionary containing 
+          {image:transformed, bboxes:['x_min', 'y_min', 'x_max', 'y_max', 'class_id']}
     """
     # create resize transform pipeline
     transform = albumentations.Compose(
