@@ -1,0 +1,8 @@
+path: ./data  
+train: C:/Users/yslin/Documents/Projects/dst/data/train  
+val: C:/Users/yslin/Documents/Projects/dst/data/validation  
+test:  
+
+names:
+  0: spider
+  1: hound
