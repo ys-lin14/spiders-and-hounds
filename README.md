@@ -1,5 +1,5 @@
 # Spiders and Hounds
-Real time hostile mob detection (spiders and hounds) for *Don't Starve Together* using the YOLOv8 Nano model. Images were collected and annotated using Python and LabelImg. WandB was used to track/version data, models and metrics.
+Real time hostile mob detection (spiders and hounds) for *Don't Starve Together* using a fine-tuned YOLOv8 Nano model. Images were collected and annotated using Python and LabelImg. WandB was used to track/version data, models and metrics.
 <br><br>
 
 **Validation Image Predictions** 
