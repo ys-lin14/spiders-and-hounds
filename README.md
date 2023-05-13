@@ -17,4 +17,4 @@ Links:
 - [YOLOv8 Nano Weights](https://github.com/ultralytics/assets/releases/download/v0.0.0/yolov8n.pt)
 
 References\
-*Don't Starve Together* [Game]. (2016). Vancouver (British Columbia): Klei Entertainment
+*Don't Starve Together* [Game]. (2016). Vancouver (British Columbia): Klei Entertainment.
