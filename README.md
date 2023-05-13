@@ -8,6 +8,8 @@ Real time hostile mob detection (spiders and hounds) for *Don't Starve Together*
 
 **Real-Time Detection**
 ![Real-Time Detection](https://github.com/ys-lin14/spiders-and-hounds/blob/main/results/sample_gif.gif)
+<br>
+**The model works but needs more data*
 <br><br>
 
 Links:
